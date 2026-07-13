@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ShopSmart — askappu.in</title>
+<meta name="description" content="Kirana inventory over WhatsApp — no app to install, no touchscreen to fight."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../_shared/project.css"/>
+</head>
+<body>
+
+<div class="grid-bg" aria-hidden="true"></div>
+
+<!-- Top HUD -->
+<header class="hud-top">
+  <div class="brand">
+    <a href="../../askappu-blueprint.html">
+      <div class="logo-mark">A</div>
+      <span>askappu.in</span>
+    </a>
+  </div>
+  <div class="breadcrumbs">
+    <a href="../../askappu-blueprint.html" class="home-label">Home</a>
+    <span class="sep">/</span>
+    <a href="../../askappu-blueprint.html#projects">Projects</a>
+    <span class="sep">/</span>
+    <span class="current">ShopSmart</span>
+  </div>
+  <div class="status">
+    <span class="dot"></span>
+    <span>KIRANA-OS-06</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="p-hero" data-screen-label="Hero">
+    <div class="p-hero-inner">
+      <div>
+        <div class="p-status beta mono">
+          <span class="dot"></span>PROTOTYPE
+        </div>
+        <h1 class="p-title">Shop<span class="accent">Smart</span></h1>
+        <p class="p-tagline">Kirana inventory over WhatsApp — no app to install, no touchscreen to fight.</p>
+
+        <div class="p-hero-meta mono">
+          <div>CODENAME<span>KIRANA-OS-06</span></div>
+          <div>CATEGORY<span>SMB / commerce</span></div>
+          <div>STATUS<span>PROTOTYPE</span></div>
+        </div>
+
+        <div class="p-cta">
+          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Try the app →</a>
+          <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">Watch demo</a>
+        </div>
+      </div>
+
+      <div class="p-hero-image">
+        <img src="hero.jpg" alt="ShopSmart product illustration in blueprint style" loading="eager"/>
+        <div class="caption mono">FIG.01 · KIRANA-OS-06 · SYSTEM VIEW</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROBLEM ============ -->
+  <section class="p-section" data-screen-label="Problem">
+    <div class="p-section-label mono"><span>01 · The problem</span></div>
+    <h2 class="p-section-title">What ShopSmart is trying to fix.</h2>
+    <div class="p-problem">
+      <div class="p-problem-body">
+        <p>Corner-shop owners (kirana walas) don't have time for POS software. Most track stock in a notebook. When something runs out, they realise only when a customer walks away disappointed.</p>
+        <p>ShopSmart is an AI bot that lives inside WhatsApp. The shopkeeper just types 'sold 2 Maggi' or 'got 10 Amul milk' in Hinglish, and the bot maintains inventory quietly in the background. Low-stock alerts, weekly summaries, monthly re-order suggestions.</p>
+      </div>
+      <div class="p-problem-callout">
+        <div class="tag mono">Design principle</div>
+        <div class="quote">"The best software for a shop is the one they already use."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="p-section" data-screen-label="How it works">
+    <div class="p-section-label mono"><span>02 · How it works</span></div>
+    <h2 class="p-section-title">Three steps, no learning curve.</h2>
+    <div class="p-steps">
+        <div class="p-step">
+          <div class="num mono">01</div>
+          <h3>Text it like a friend</h3>
+          <p>Add ShopSmart on WhatsApp. Type sales and restocks in Hinglish, Kannada, or Hindi — however you talk.</p>
+        </div>
+        <div class="p-step">
+          <div class="num mono">02</div>
+          <h3>Let AI do the ledger</h3>
+          <p>The bot maps every message to a product, updates stock counts, and flags anything ambiguous back to you.</p>
+        </div>
+        <div class="p-step">
+          <div class="num mono">03</div>
+          <h3>Get daily summaries</h3>
+          <p>Every night, get a 3-line WhatsApp report: what sold, what's low, what to order tomorrow.</p>
+        </div>
+    </div>
+  </section>
+
+  <!-- ============ TECH ============ -->
+  <section class="p-section" data-screen-label="Tech">
+    <div class="p-section-label mono"><span>03 · Built with</span></div>
+    <h2 class="p-section-title">The stack.</h2>
+    <div class="p-tech">
+          <div class="p-tech-item"><span class="dot"></span>Gemini Flash</div>
+          <div class="p-tech-item"><span class="dot"></span>WhatsApp Cloud API</div>
+          <div class="p-tech-item"><span class="dot"></span>Postgres</div>
+          <div class="p-tech-item"><span class="dot"></span>Node.js</div>
+          <div class="p-tech-item"><span class="dot"></span>Redis</div>
+    </div>
+  </section>
+
+  <!-- ============ CTA / TRY IT ============ -->
+  <section class="p-section" data-screen-label="Try it">
+    <div class="p-section-label mono"><span>04 · Try it &amp; connect</span></div>
+    <h2 class="p-section-title">Want to help, test, or steal the idea?</h2>
+
+    <div class="p-cta-row">
+      <a class="p-cta-card" href="#" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12 L19 12"/><path d="M13 6 L19 12 L13 18"/>
+        </svg>
+        <h4>Try the app</h4>
+        <p>Open the live demo and take it for a spin.</p>
+        <span class="arrow mono">LAUNCH →</span>
+      </a>
+
+      <a class="p-cta-card" href="#" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M10 8 L16 12 L10 16 Z" fill="currentColor"/>
+        </svg>
+        <h4>Watch the walkthrough</h4>
+        <p>3-minute video of how ShopSmart works, end to end.</p>
+        <span class="arrow mono">PLAY →</span>
+      </a>
+
+      <a class="p-cta-card" href="../../askappu-blueprint.html#problems">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6 L20 6 L20 18 L4 18 Z"/>
+          <path d="M4 6 L12 13 L20 6"/>
+        </svg>
+        <h4>Talk to Appu</h4>
+        <p>Got feedback, a use-case, or want to collaborate?</p>
+        <span class="arrow mono">CONTACT →</span>
+      </a>
+    </div>
+
+    <a href="../../askappu-blueprint.html#projects" class="p-back mono">← Back to all projects</a>
+  </section>
+
+</main>
+
+<footer class="p-footer">
+  <div>askappu.in / projects / shopsmart · © 2026 Siddharth</div>
+  <div>KIRANA-OS-06 · Bangalore, India</div>
+</footer>
+
+</body>
+</html>

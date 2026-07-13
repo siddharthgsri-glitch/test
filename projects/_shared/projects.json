@@ -1,0 +1,225 @@
+[
+  {
+    "slug": "formsaathi",
+    "name": "FormSaathi",
+    "codename": "FORM-ASSIST-01",
+    "status": {
+      "label": "IN DEVELOPMENT",
+      "class": ""
+    },
+    "tagline": "Fill any Indian government form — in your own language, with a friend.",
+    "problem_lead": "Every Indian household has a story about a form gone wrong. Pension, Aadhaar update, ration card, school admission — dense PDFs full of English legalese that grandparents, first-time applicants, and small business owners have to guess through.",
+    "problem_body": "FormSaathi reads the form for you. Take a photo, tell it what you're trying to do, and it walks you through every field in Hindi, Kannada, Tamil, Bengali — whichever language you actually think in. No jargon. No skipped boxes.",
+    "quote": "\"Nobody should lose a benefit because a form was too hard to read.\"",
+    "steps": [
+      {
+        "title": "Snap the form",
+        "body": "Photograph any government form or upload a PDF. The AI reads the fields, checkboxes, and instructions."
+      },
+      {
+        "title": "Chat in your language",
+        "body": "Answer simple questions in Hindi, Kannada, Tamil or English. The assistant maps each answer to the right field."
+      },
+      {
+        "title": "Get a filled form",
+        "body": "Download or print the completed form, ready to submit. FormSaathi also flags missing documents you'll need."
+      }
+    ],
+    "tech": [
+      "Gemini 2.5",
+      "Whisper (voice)",
+      "Bharat Fonts",
+      "Next.js",
+      "Tailwind",
+      "Supabase"
+    ],
+    "demo_url": "#",
+    "video_url": "#",
+    "section_label": "Project 01 · Civic tools"
+  },
+  {
+    "slug": "krishiscan",
+    "name": "KrishiScan",
+    "codename": "AGRI-MOD-02",
+    "status": {
+      "label": "BETA",
+      "class": "beta"
+    },
+    "tagline": "Photograph a sick leaf. Get a diagnosis and a plan — before the crop is gone.",
+    "problem_lead": "Small farmers lose entire harvests to diseases that could be caught in a day. Agri-officers can't cover every village, and generic Google searches don't work for the specific crop varieties grown here.",
+    "problem_body": "KrishiScan lets any farmer with a phone photograph a leaf, a stem, or a fruit and get an on-device diagnosis in seconds. The recommendation is local — accounts for the soil, the season, and the pesticides actually available at the nearest agri-shop.",
+    "quote": "\"A phone camera can save a season.\"",
+    "steps": [
+      {
+        "title": "Point &amp; scan",
+        "body": "Open KrishiScan, aim at the affected leaf or crop, and hold steady. The model works offline once downloaded."
+      },
+      {
+        "title": "Read the diagnosis",
+        "body": "See the likely disease with confidence %, alternative possibilities, and how urgent it is. All in the farmer's language."
+      },
+      {
+        "title": "Get a local plan",
+        "body": "Get a step-by-step treatment plan using inputs available nearby — plus a link to the closest Krishi Vigyan Kendra if it's serious."
+      }
+    ],
+    "tech": [
+      "TensorFlow Lite",
+      "Gemini Vision",
+      "PlantVillage dataset",
+      "Flutter",
+      "Firebase"
+    ],
+    "demo_url": "#",
+    "video_url": "#",
+    "section_label": "Project 02 · Agriculture"
+  },
+  {
+    "slug": "busbuddy",
+    "name": "BusBuddy",
+    "codename": "BMTC-API-03",
+    "status": {
+      "label": "LIVE",
+      "class": "live"
+    },
+    "tagline": "Bangalore buses, live and readable — for people who don't want to squint at an app.",
+    "problem_lead": "The BMTC app exists, but the fonts are tiny, the map is dense, and my grandmother can't tell if the bus is 4 minutes or 40 minutes away. Everyone I know just calls a family member to check.",
+    "problem_body": "BusBuddy is a stripped-down real-time bus tracker built for older people and non-technical users. One screen. Big text in Kannada or English. Only the information you actually need: which bus, when, from where.",
+    "quote": "\"The best app for elders is the one that shows only one number.\"",
+    "steps": [
+      {
+        "title": "Pick your stop",
+        "body": "Set a home stop once. BusBuddy remembers it and shows arrivals for that stop by default."
+      },
+      {
+        "title": "See what's coming",
+        "body": "Live buses to your destination with countdown timers. Big text. Kannada, Hindi, English."
+      },
+      {
+        "title": "Get on the right bus",
+        "body": "A voice alert 2 minutes before arrival, and a nudge if a rare bus is coming that you'd normally miss."
+      }
+    ],
+    "tech": [
+      "BMTC Open API",
+      "PWA",
+      "IndexedDB",
+      "Kannada TTS",
+      "Vanilla JS"
+    ],
+    "demo_url": "#",
+    "video_url": "#",
+    "section_label": "Project 03 · Civic tools"
+  },
+  {
+    "slug": "pathshala",
+    "name": "PathshalaAI",
+    "codename": "EDU-TRANS-04",
+    "status": {
+      "label": "IN DEVELOPMENT",
+      "class": ""
+    },
+    "tagline": "Any textbook, any language, any kid. Learning shouldn't need translation homework.",
+    "problem_lead": "Kids in Indian government schools often learn in one language but read reference material in another. Their science textbook is in Kannada but the good YouTube explainer is in English. Their Hindi grammar guide has zero examples that feel like home.",
+    "problem_body": "PathshalaAI takes any textbook page — English, Hindi, Kannada, Tamil, Bengali, Marathi — and rewrites it in the kid's stronger language, with local examples. Not just translated — reworded so it actually makes sense to a 10-year-old.",
+    "quote": "\"Understanding shouldn't depend on which language your textbook is in.\"",
+    "steps": [
+      {
+        "title": "Scan the page",
+        "body": "Take a photo of a textbook page or paste text. Any Indian language, any subject."
+      },
+      {
+        "title": "Pick the target",
+        "body": "Choose the language and reading level. PathshalaAI adapts vocabulary, examples, and even units to match."
+      },
+      {
+        "title": "Read &amp; ask questions",
+        "body": "Get a rewritten version + a small tutor chat for anything the kid still doesn't understand."
+      }
+    ],
+    "tech": [
+      "Gemini 2.5",
+      "IndicBERT",
+      "OCR (Tesseract)",
+      "React Native",
+      "Firestore"
+    ],
+    "demo_url": "#",
+    "video_url": "#",
+    "section_label": "Project 04 · Education"
+  },
+  {
+    "slug": "doctorsetu",
+    "name": "DoctorSetu",
+    "codename": "RX-DECODE-05",
+    "status": {
+      "label": "IN DEVELOPMENT",
+      "class": ""
+    },
+    "tagline": "That prescription your doctor scribbled? Here's what it actually says.",
+    "problem_lead": "Indian prescriptions are handwritten, half-abbreviated, half-Latin. Elders forget which pill is for what. Chemists sometimes hand out the wrong strength. Nobody explains why you're taking three things instead of one.",
+    "problem_body": "DoctorSetu scans a prescription, decodes every medicine, and explains dosage, timing, and side effects in plain Hindi/English/Kannada. It also flags dangerous combinations before you get to the pharmacy.",
+    "quote": "\"A prescription only helps if the patient understands it.\"",
+    "steps": [
+      {
+        "title": "Snap the paper",
+        "body": "Photograph the prescription or lab report. Handwritten, printed, or scanned — all fine."
+      },
+      {
+        "title": "Read every line",
+        "body": "See each medicine with its purpose, dose, timing, and what to watch out for. Big text, no jargon."
+      },
+      {
+        "title": "Set reminders",
+        "body": "Add pill reminders in one tap. Optional voice reminders in the elder's language of choice."
+      }
+    ],
+    "tech": [
+      "Gemini Vision",
+      "RxNorm database",
+      "Handwriting OCR",
+      "Vue 3",
+      "SQLite (on-device)"
+    ],
+    "demo_url": "#",
+    "video_url": "#",
+    "section_label": "Project 05 · Healthcare"
+  },
+  {
+    "slug": "shopsmart",
+    "name": "ShopSmart",
+    "codename": "KIRANA-OS-06",
+    "status": {
+      "label": "PROTOTYPE",
+      "class": "beta"
+    },
+    "tagline": "Kirana inventory over WhatsApp — no app to install, no touchscreen to fight.",
+    "problem_lead": "Corner-shop owners (kirana walas) don't have time for POS software. Most track stock in a notebook. When something runs out, they realise only when a customer walks away disappointed.",
+    "problem_body": "ShopSmart is an AI bot that lives inside WhatsApp. The shopkeeper just types 'sold 2 Maggi' or 'got 10 Amul milk' in Hinglish, and the bot maintains inventory quietly in the background. Low-stock alerts, weekly summaries, monthly re-order suggestions.",
+    "quote": "\"The best software for a shop is the one they already use.\"",
+    "steps": [
+      {
+        "title": "Text it like a friend",
+        "body": "Add ShopSmart on WhatsApp. Type sales and restocks in Hinglish, Kannada, or Hindi — however you talk."
+      },
+      {
+        "title": "Let AI do the ledger",
+        "body": "The bot maps every message to a product, updates stock counts, and flags anything ambiguous back to you."
+      },
+      {
+        "title": "Get daily summaries",
+        "body": "Every night, get a 3-line WhatsApp report: what sold, what's low, what to order tomorrow."
+      }
+    ],
+    "tech": [
+      "Gemini Flash",
+      "WhatsApp Cloud API",
+      "Postgres",
+      "Node.js",
+      "Redis"
+    ],
+    "demo_url": "#",
+    "video_url": "#",
+    "section_label": "Project 06 · SMB / commerce"
+  }
+]

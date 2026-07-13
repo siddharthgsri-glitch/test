@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BusBuddy — askappu.in</title>
+<meta name="description" content="Bangalore buses, live and readable — for people who don't want to squint at an app."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../_shared/project.css"/>
+</head>
+<body>
+
+<div class="grid-bg" aria-hidden="true"></div>
+
+<!-- Top HUD -->
+<header class="hud-top">
+  <div class="brand">
+    <a href="../../askappu-blueprint.html">
+      <div class="logo-mark">A</div>
+      <span>askappu.in</span>
+    </a>
+  </div>
+  <div class="breadcrumbs">
+    <a href="../../askappu-blueprint.html" class="home-label">Home</a>
+    <span class="sep">/</span>
+    <a href="../../askappu-blueprint.html#projects">Projects</a>
+    <span class="sep">/</span>
+    <span class="current">BusBuddy</span>
+  </div>
+  <div class="status">
+    <span class="dot"></span>
+    <span>BMTC-API-03</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="p-hero" data-screen-label="Hero">
+    <div class="p-hero-inner">
+      <div>
+        <div class="p-status live mono">
+          <span class="dot"></span>LIVE
+        </div>
+        <h1 class="p-title">Bus<span class="accent">Buddy</span></h1>
+        <p class="p-tagline">Bangalore buses, live and readable — for people who don't want to squint at an app.</p>
+
+        <div class="p-hero-meta mono">
+          <div>CODENAME<span>BMTC-API-03</span></div>
+          <div>CATEGORY<span>Civic tools</span></div>
+          <div>STATUS<span>LIVE</span></div>
+        </div>
+
+        <div class="p-cta">
+          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Try the app →</a>
+          <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">Watch demo</a>
+        </div>
+      </div>
+
+      <div class="p-hero-image">
+        <img src="hero.jpg" alt="BusBuddy product illustration in blueprint style" loading="eager"/>
+        <div class="caption mono">FIG.01 · BMTC-API-03 · SYSTEM VIEW</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROBLEM ============ -->
+  <section class="p-section" data-screen-label="Problem">
+    <div class="p-section-label mono"><span>01 · The problem</span></div>
+    <h2 class="p-section-title">What BusBuddy is trying to fix.</h2>
+    <div class="p-problem">
+      <div class="p-problem-body">
+        <p>The BMTC app exists, but the fonts are tiny, the map is dense, and my grandmother can't tell if the bus is 4 minutes or 40 minutes away. Everyone I know just calls a family member to check.</p>
+        <p>BusBuddy is a stripped-down real-time bus tracker built for older people and non-technical users. One screen. Big text in Kannada or English. Only the information you actually need: which bus, when, from where.</p>
+      </div>
+      <div class="p-problem-callout">
+        <div class="tag mono">Design principle</div>
+        <div class="quote">"The best app for elders is the one that shows only one number."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="p-section" data-screen-label="How it works">
+    <div class="p-section-label mono"><span>02 · How it works</span></div>
+    <h2 class="p-section-title">Three steps, no learning curve.</h2>
+    <div class="p-steps">
+        <div class="p-step">
+          <div class="num mono">01</div>
+          <h3>Pick your stop</h3>
+          <p>Set a home stop once. BusBuddy remembers it and shows arrivals for that stop by default.</p>
+        </div>
+        <div class="p-step">
+          <div class="num mono">02</div>
+          <h3>See what's coming</h3>
+          <p>Live buses to your destination with countdown timers. Big text. Kannada, Hindi, English.</p>
+        </div>
+        <div class="p-step">
+          <div class="num mono">03</div>
+          <h3>Get on the right bus</h3>
+          <p>A voice alert 2 minutes before arrival, and a nudge if a rare bus is coming that you'd normally miss.</p>
+        </div>
+    </div>
+  </section>
+
+  <!-- ============ TECH ============ -->
+  <section class="p-section" data-screen-label="Tech">
+    <div class="p-section-label mono"><span>03 · Built with</span></div>
+    <h2 class="p-section-title">The stack.</h2>
+    <div class="p-tech">
+          <div class="p-tech-item"><span class="dot"></span>BMTC Open API</div>
+          <div class="p-tech-item"><span class="dot"></span>PWA</div>
+          <div class="p-tech-item"><span class="dot"></span>IndexedDB</div>
+          <div class="p-tech-item"><span class="dot"></span>Kannada TTS</div>
+          <div class="p-tech-item"><span class="dot"></span>Vanilla JS</div>
+    </div>
+  </section>
+
+  <!-- ============ CTA / TRY IT ============ -->
+  <section class="p-section" data-screen-label="Try it">
+    <div class="p-section-label mono"><span>04 · Try it &amp; connect</span></div>
+    <h2 class="p-section-title">Want to help, test, or steal the idea?</h2>
+
+    <div class="p-cta-row">
+      <a class="p-cta-card" href="#" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12 L19 12"/><path d="M13 6 L19 12 L13 18"/>
+        </svg>
+        <h4>Try the app</h4>
+        <p>Open the live demo and take it for a spin.</p>
+        <span class="arrow mono">LAUNCH →</span>
+      </a>
+
+      <a class="p-cta-card" href="#" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M10 8 L16 12 L10 16 Z" fill="currentColor"/>
+        </svg>
+        <h4>Watch the walkthrough</h4>
+        <p>3-minute video of how BusBuddy works, end to end.</p>
+        <span class="arrow mono">PLAY →</span>
+      </a>
+
+      <a class="p-cta-card" href="../../askappu-blueprint.html#problems">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6 L20 6 L20 18 L4 18 Z"/>
+          <path d="M4 6 L12 13 L20 6"/>
+        </svg>
+        <h4>Talk to Appu</h4>
+        <p>Got feedback, a use-case, or want to collaborate?</p>
+        <span class="arrow mono">CONTACT →</span>
+      </a>
+    </div>
+
+    <a href="../../askappu-blueprint.html#projects" class="p-back mono">← Back to all projects</a>
+  </section>
+
+</main>
+
+<footer class="p-footer">
+  <div>askappu.in / projects / busbuddy · © 2026 Siddharth</div>
+  <div>BMTC-API-03 · Bangalore, India</div>
+</footer>
+
+</body>
+</html>
