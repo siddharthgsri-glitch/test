@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>askappu.in — Siddharth (Appu) | Curious kid from Bangalore</title>
+<meta name="description" content="Siddharth (Appu) — 12, from Bangalore. Interests: aircraft, chess, badminton, Harry Potter, teaching. Building AI for Bharat."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy-900: #06111f;
+    --navy-800: #0a1a2e;
+    --navy-700: #10253d;
+    --navy-600: #17324f;
+    --line:     #1e4a75;
+    --line-soft:#12324f;
+    --cyan:     #7fd7ff;
+    --cyan-2:   #52b6e6;
+    --amber:    #ffb454;
+    --paper:    #e8f4ff;
+    --text:     #cfe2f5;
+    --muted:    #6d8ca8;
+    --white:    #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy-900);
+    color: var(--text);
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+  /* ============ BLUEPRINT GRID BACKGROUND ============ */
+  .grid-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-color: var(--navy-900);
+    background-image:
+      linear-gradient(var(--line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px),
+      radial-gradient(ellipse at 20% 10%, rgba(82,182,230,0.10), transparent 55%),
+      radial-gradient(ellipse at 80% 90%, rgba(127,215,255,0.06), transparent 55%);
+    background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%;
+    opacity: 0.9;
+  }
+  .grid-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 200px 200px;
+    opacity: 0.5;
+  }
+
+  main { position: relative; z-index: 1; }
+
+  /* ============ TOP HUD BAR ============ */
+  .hud-top {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 28px;
+    background: linear-gradient(180deg, rgba(6,17,31,0.85), rgba(6,17,31,0));
+    backdrop-filter: blur(6px);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cyan);
+  }
+  .hud-top .brand { display: flex; align-items: center; gap: 10px; }
+  .hud-top .brand .logo-mark {
+    width: 26px; height: 26px;
+    border: 1.5px solid var(--cyan);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-weight: 700;
+    color: var(--cyan);
+    background: rgba(127,215,255,0.06);
+  }
+  .hud-top nav { display: flex; gap: 22px; }
+  .hud-top nav a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .hud-top nav a:hover { color: var(--cyan); }
+  .hud-top .status { display: flex; align-items: center; gap: 8px; }
+  .hud-top .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 8px #4ade80;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* ============ SECTION LAYOUT ============ */
+  section {
+    padding: 90px 6vw 80px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  /* Hero keeps a fuller viewport feel; other sections size to content */
+  #hero {
+    min-height: 100vh;
+    padding-top: 110px;
+  }
+  #about, #interests, #projects, #problems {
+    min-height: auto;
+  }
+  /* Tighter section separators between content sections */
+  #about { padding-top: 80px; padding-bottom: 80px; }
+  #interests { padding-top: 80px; padding-bottom: 80px; }
+  #projects { padding-top: 80px; padding-bottom: 80px; }
+  #problems { padding-top: 80px; padding-bottom: 100px; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cyan-2);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .section-label::before {
+    content: "";
+    display: block;
+    width: 40px; height: 1px;
+    background: var(--cyan-2);
+  }
+
+  h1, h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--white);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  /* ============ SECTION 1: HERO ============ */
+  .hero-wrap {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+  .hero-callsign {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    color: var(--amber);
+    margin-bottom: 24px;
+  }
+  .hero-title {
+    font-size: clamp(36px, 9vw, 108px);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  .hero-title .accent {
+    color: var(--cyan);
+    position: relative;
+  }
+  .hero-sub {
+    max-width: 600px;
+    margin-top: 28px;
+    font-size: clamp(16px, 1.4vw, 20px);
+    color: var(--text);
+  }
+  .hero-meta {
+    margin-top: 40px;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .hero-meta div span {
+    display: block;
+    color: var(--cyan);
+    font-size: 15px;
+    margin-top: 4px;
+  }
+
+  /* Cockpit gauges */
+  .gauges {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    opacity: 0.85;
+  }
+  .gauge {
+    width: 120px; height: 120px;
+    border: 1.5px solid var(--line);
+    border-radius: 50%;
+    position: relative;
+    background: radial-gradient(circle at center, rgba(127,215,255,0.05), transparent 70%);
+  }
+  .gauge::before, .gauge::after {
+    content: "";
+    position: absolute;
+    background: var(--cyan-2);
+  }
+  .gauge::before {
+    top: 6px; left: 50%;
+    width: 1px; height: 8px;
+    transform: translateX(-50%);
+  }
+  .gauge::after {
+    bottom: 6px; left: 50%;
+    width: 1px; height: 8px;
+    transform: translateX(-50%);
+  }
+  .gauge .needle {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 2px;
+    height: 45%;
+    background: linear-gradient(180deg, var(--amber), transparent);
+    transform-origin: bottom center;
+    transform: translate(-50%, -100%) rotate(35deg);
+    border-radius: 2px;
+  }
+  .gauge.slow .needle { animation: spin1 18s ease-in-out infinite alternate; }
+  .gauge.fast .needle { animation: spin2 8s ease-in-out infinite alternate; }
+  @keyframes spin1 { from { transform: translate(-50%, -100%) rotate(20deg); } to { transform: translate(-50%, -100%) rotate(120deg); } }
+  @keyframes spin2 { from { transform: translate(-50%, -100%) rotate(-45deg); } to { transform: translate(-50%, -100%) rotate(85deg); } }
+  .gauge .label {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--cyan-2);
+    white-space: nowrap;
+  }
+  .gauge .value {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--white);
+    margin-top: 24px;
+  }
+  @media (max-width: 900px) { .gauges { display: none; } }
+
+  /* Scroll cue */
+  .scroll-cue {
+    position: absolute;
+    bottom: 32px;
+    left: 6vw;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: bob 2.4s ease-in-out infinite;
+  }
+  .scroll-cue .line { width: 1px; height: 30px; background: linear-gradient(180deg, var(--cyan-2), transparent); }
+  @keyframes bob {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* ============ PAPER AIRPLANE ============ */
+  .paper-plane {
+    position: fixed;
+    top: 22%;
+    left: -80px;
+    width: 60px;
+    z-index: 3;
+    pointer-events: none;
+    animation: fly 22s linear infinite;
+    filter: drop-shadow(0 4px 12px rgba(127,215,255,0.25));
+  }
+  .paper-plane svg { width: 100%; display: block; }
+  @keyframes fly {
+    0%   { transform: translate(0, 0) rotate(-8deg); left: -80px; top: 22%; opacity: 0; }
+    5%   { opacity: 1; }
+    25%  { transform: translate(30vw, 4vh) rotate(-4deg); }
+    50%  { transform: translate(55vw, -6vh) rotate(-14deg); }
+    75%  { transform: translate(85vw, 8vh) rotate(6deg); }
+    95%  { opacity: 1; }
+    100% { transform: translate(115vw, -4vh) rotate(-8deg); opacity: 0; left: -80px; top: 22%; }
+  }
+
+  /* ============ SECTION 2: ABOUT ============ */
+  #about .about-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    #about .about-wrap { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* Pilot's wings badge with initial */
+  .avatar-badge {
+    width: 100%;
+    aspect-ratio: 1;
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+  .avatar-badge svg { width: 100%; height: 100%; }
+  .avatar-badge .initial {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 96px;
+    font-weight: 700;
+    color: var(--cyan);
+    text-shadow: 0 0 20px rgba(127,215,255,0.4);
+    letter-spacing: -0.05em;
+  }
+
+  .about-title {
+    font-size: clamp(36px, 5vw, 64px);
+    margin-bottom: 24px;
+  }
+  .about-body {
+    font-size: clamp(16px, 1.2vw, 19px);
+    color: var(--text);
+    max-width: 620px;
+    margin-bottom: 32px;
+    text-wrap: pretty;
+  }
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+    max-width: 620px;
+  }
+  .fact {
+    padding: 16px 18px;
+    border: 1px solid var(--line);
+    background: rgba(23,50,79,0.35);
+    border-radius: 2px;
+    position: relative;
+  }
+  .fact::before {
+    content: "";
+    position: absolute;
+    top: -1px; left: -1px;
+    width: 10px; height: 10px;
+    border-top: 1.5px solid var(--cyan);
+    border-left: 1.5px solid var(--cyan);
+  }
+  .fact::after {
+    content: "";
+    position: absolute;
+    bottom: -1px; right: -1px;
+    width: 10px; height: 10px;
+    border-bottom: 1.5px solid var(--cyan);
+    border-right: 1.5px solid var(--cyan);
+  }
+  .fact .k {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .fact .v {
+    color: var(--white);
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  /* ============ SECTION 3: INTERESTS ============ */
+  #interests .interests-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .interests-title {
+    font-size: clamp(36px, 5vw, 64px);
+    margin-bottom: 12px;
+  }
+  .interests-sub {
+    color: var(--muted);
+    max-width: 560px;
+    margin-bottom: 48px;
+  }
+  .interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(23,50,79,0.5), rgba(10,26,46,0.5));
+    padding: 28px 24px;
+    position: relative;
+    transition: transform .3s ease, border-color .3s ease, background .3s ease;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--cyan);
+    background: linear-gradient(180deg, rgba(31,74,117,0.6), rgba(10,26,46,0.5));
+  }
+  .card::before {
+    content: attr(data-num);
+    position: absolute;
+    top: 12px; right: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+  }
+  .card .icon {
+    width: 44px; height: 44px;
+    margin-bottom: 20px;
+    color: var(--cyan);
+  }
+  .card h3 {
+    font-size: 22px;
+    color: var(--white);
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .card p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ============ SECTION 4: PROBLEMS + CONTACT ============ */
+  #problems .problems-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    #problems .problems-wrap { grid-template-columns: 1fr; gap: 40px; }
+  }
+  .problems-title {
+    font-size: clamp(32px, 4.5vw, 56px);
+    margin-bottom: 20px;
+  }
+  .problems-body {
+    color: var(--text);
+    margin-bottom: 28px;
+    font-size: clamp(15px, 1.1vw, 17px);
+    max-width: 540px;
+  }
+  .mission-box {
+    padding: 24px;
+    border: 1px dashed var(--line);
+    background: rgba(23,50,79,0.25);
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+  .mission-box .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    margin-bottom: 10px;
+  }
+  .mission-box .text {
+    color: var(--white);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+  .problem-list {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+  }
+  .problem-list li {
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+    font-size: 15px;
+    color: var(--text);
+  }
+  .problem-list li .bullet {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--cyan);
+    letter-spacing: 0.15em;
+  }
+
+  /* Contact form */
+  .contact-card {
+    border: 1px solid var(--line);
+    background: rgba(10,26,46,0.65);
+    padding: 32px;
+    position: relative;
+  }
+  .contact-card::before, .contact-card::after {
+    content: "";
+    position: absolute;
+    width: 16px; height: 16px;
+  }
+  .contact-card::before { top: -1px; left: -1px; border-top: 2px solid var(--cyan); border-left: 2px solid var(--cyan); }
+  .contact-card::after { bottom: -1px; right: -1px; border-bottom: 2px solid var(--cyan); border-right: 2px solid var(--cyan); }
+  .contact-card h3 {
+    color: var(--white);
+    font-size: 22px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .contact-card p.desc {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  .field {
+    margin-bottom: 16px;
+  }
+  .field label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cyan-2);
+    margin-bottom: 6px;
+  }
+  .field input, .field textarea {
+    width: 100%;
+    background: rgba(6,17,31,0.6);
+    border: 1px solid var(--line);
+    color: var(--white);
+    padding: 12px 14px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color .2s;
+    border-radius: 2px;
+  }
+  .field textarea { resize: vertical; min-height: 100px; font-family: 'Space Grotesk', sans-serif; }
+  .field input:focus, .field textarea:focus { border-color: var(--cyan); }
+  .btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--cyan);
+    color: var(--navy-900);
+    border: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .2s, transform .1s;
+    border-radius: 2px;
+  }
+  .btn:hover { background: var(--white); }
+  .btn:active { transform: translateY(1px); }
+  .form-msg {
+    margin-top: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #4ade80;
+    letter-spacing: 0.1em;
+    min-height: 16px;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 30px 6vw;
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ============ PROJECTS SECTION ============ */
+  #projects .projects-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 40px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+  .projects-title {
+    font-size: clamp(36px, 5vw, 64px);
+    margin-bottom: 12px;
+  }
+  .projects-sub {
+    color: var(--muted);
+    max-width: 420px;
+    font-size: 15px;
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .p-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(23,50,79,0.4), rgba(10,26,46,0.5));
+    overflow: hidden;
+    transition: transform .3s ease, border-color .3s ease;
+    position: relative;
+  }
+  .p-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--cyan);
+  }
+  .p-card:hover .p-card-thumb::after { opacity: 0.15; }
+  .p-card:hover .p-card-arrow { transform: translateX(4px); color: var(--cyan); }
+  .p-card-thumb {
+    aspect-ratio: 3/2;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+    background: var(--navy-800);
+  }
+  .p-card-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .5s ease;
+  }
+  .p-card:hover .p-card-thumb img { transform: scale(1.03); }
+  .p-card-thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--cyan);
+    opacity: 0;
+    transition: opacity .3s;
+    mix-blend-mode: overlay;
+  }
+  .p-card-status {
+    position: absolute;
+    top: 10px; left: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    padding: 4px 8px;
+    background: rgba(6,17,31,0.85);
+    border: 1px solid var(--line-soft);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+  }
+  .p-card-status .dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 4px var(--amber);
+  }
+  .p-card-status.live { color: #4ade80; }
+  .p-card-status.live .dot { background: #4ade80; box-shadow: 0 0 4px #4ade80; }
+  .p-card-status.beta { color: var(--cyan); }
+  .p-card-status.beta .dot { background: var(--cyan); box-shadow: 0 0 4px var(--cyan); }
+  .p-card-body {
+    padding: 22px 22px 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .p-card-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .p-card h3 {
+    color: var(--white);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .p-card p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+    flex-grow: 1;
+    margin-bottom: 16px;
+  }
+  .p-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line-soft);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .p-card-arrow {
+    color: var(--cyan-2);
+    transition: transform .2s, color .2s;
+    font-size: 13px;
+    letter-spacing: 0;
+  }
+
+  /* ============ MOBILE OVERRIDES ============ */
+  @media (max-width: 768px) {
+    /* Tighter mobile section padding */
+    section { padding: 70px 5vw 60px; }
+    #hero { padding-top: 100px; min-height: auto; padding-bottom: 60px; }
+    #about, #interests, #projects, #problems {
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+    /* HUD collapses: hide nav, show hamburger toggle */
+    .hud-top { padding: 12px 16px; font-size: 10px; }
+    .hud-top nav { display: none; }
+    .hud-top nav.open {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: rgba(6,17,31,0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      padding: 8px 16px 16px;
+    }
+    .hud-top nav.open a {
+      padding: 12px 4px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .hud-top nav.open a:last-child { border-bottom: none; }
+    .hud-top .status { display: none; }
+    .menu-toggle { display: inline-flex; }
+
+    .hero-title { font-size: clamp(38px, 10vw, 60px); }
+    .hero-meta { gap: 20px; }
+
+    .facts { grid-template-columns: repeat(2, 1fr); }
+    .fact .v { font-size: 16px; }
+
+    .interests-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+
+    #problems .problems-wrap { gap: 32px; }
+    .contact-card { padding: 24px 22px; }
+
+    .scroll-cue { display: none; }
+    footer { padding: 24px 5vw; font-size: 10px; }
+  }
+  @media (max-width: 420px) {
+    .hero-title { font-size: clamp(32px, 11vw, 48px); }
+    .about-title, .interests-title, .projects-title { font-size: 32px; }
+    .problems-title { font-size: 28px; }
+    .hero-meta { gap: 16px; font-size: 11px; }
+    .hero-meta div span { font-size: 13px; }
+  }
+
+  /* Menu toggle button (hidden on desktop) */
+  .menu-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--cyan);
+    padding: 6px 10px;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    border-radius: 2px;
+  }
+  .menu-toggle:hover { border-color: var(--cyan); }
+
+  /* See-all button in mission section */
+  .see-all-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 18px;
+    border: 1px solid var(--line);
+    background: rgba(23,50,79,0.35);
+    color: var(--cyan);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 8px;
+    margin-bottom: 24px;
+    transition: border-color .2s, background .2s;
+  }
+  .see-all-btn:hover { border-color: var(--cyan); background: rgba(127,215,255,0.06); }
+</style>
+</head>
+<body>
+
+<div class="grid-bg" aria-hidden="true"></div>
+
+<!-- Paper airplane -->
+<div class="paper-plane" aria-hidden="true">
+  <svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 20 L62 2 L38 38 L30 24 Z" fill="#e8f4ff" stroke="#7fd7ff" stroke-width="1.2" stroke-linejoin="round"/>
+    <path d="M2 20 L30 24 L38 38" fill="none" stroke="#52b6e6" stroke-width="1" stroke-linejoin="round"/>
+    <path d="M30 24 L62 2" fill="none" stroke="#52b6e6" stroke-width="0.8" stroke-dasharray="2 2"/>
+  </svg>
+</div>
+
+<!-- Top HUD -->
+<header class="hud-top">
+  <div class="brand">
+    <div class="logo-mark">A</div>
+    <span>askappu.in</span>
+  </div>
+  <nav>
+    <a href="#hero">01 · Home</a>
+    <a href="#about">02 · About</a>
+    <a href="#interests">03 · Interests</a>
+    <a href="#projects">04 · Projects</a>
+    <a href="#problems">05 · Mission</a>
+  </nav>
+  <div class="status">
+    <span class="dot"></span>
+    <span>Cleared for takeoff</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ SECTION 1: HERO ============ -->
+  <section id="hero" data-screen-label="01 Hero">
+    <div class="hero-wrap">
+      <div class="hero-callsign mono">CALLSIGN · SIDDHARTH-001 · BLR</div>
+      <h1 class="hero-title">Hi, I'm <span class="accent">Siddharth</span>.<br/>I'm 12, and I'm building things.</h1>
+      <p class="hero-sub">
+        A kid from Bangalore who loves aircraft, chess, badminton and Harry Potter —
+        and who thinks AI can quietly fix a lot of everyday problems in Bharat.
+      </p>
+      <div class="hero-meta">
+        <div>AGE<span>12 years</span></div>
+        <div>BASE<span>Bangalore, IN</span></div>
+        <div>CURRENT MISSION<span>AI for Bharat</span></div>
+        <div>ALTITUDE<span>Climbing ↗</span></div>
+      </div>
+    </div>
+
+    <div class="gauges" aria-hidden="true">
+      <div class="gauge slow">
+        <div class="needle"></div>
+        <div class="value mono">082</div>
+        <div class="label">CURIOSITY</div>
+      </div>
+      <div class="gauge fast">
+        <div class="needle"></div>
+        <div class="value mono">100</div>
+        <div class="label">FUEL: IDEAS</div>
+      </div>
+    </div>
+
+    <div class="scroll-cue mono">
+      <span>SCROLL</span>
+      <div class="line"></div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2: ABOUT ============ -->
+  <section id="about" data-screen-label="02 About">
+    <div class="about-wrap">
+      <div class="avatar-badge reveal">
+        <!-- Pilot's wings badge -->
+        <svg data-om-id="51edacca:om-svg-2" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- outer ring -->
+          <circle cx="150" cy="150" r="120" stroke="#1e4a75" stroke-width="1.5" data-om-id="51edacca:om-circle-1"/>
+          <circle cx="150" cy="150" r="105" stroke="#1e4a75" stroke-width="1" stroke-dasharray="3 4" data-om-id="51edacca:om-circle-2"/>
+          <circle cx="150" cy="150" r="88" stroke="#7fd7ff" stroke-width="1.5" opacity="0.6" data-om-id="51edacca:om-circle-3"/>
+          <!-- wings -->
+          <path d="M40 150 Q90 130 140 150" stroke="#7fd7ff" stroke-width="2" stroke-linecap="round" fill="none" data-om-id="51edacca:om-path-4"/>
+          <path d="M40 155 Q95 148 140 158" stroke="#52b6e6" stroke-width="1.2" stroke-linecap="round" fill="none" data-om-id="51edacca:om-path-5"/>
+          <path d="M45 160 Q95 160 140 165" stroke="#52b6e6" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.7" data-om-id="51edacca:om-path-6"/>
+          <path d="M260 150 Q210 130 160 150" stroke="#7fd7ff" stroke-width="2" stroke-linecap="round" fill="none" data-om-id="51edacca:om-path-7"/>
+          <path d="M260 155 Q205 148 160 158" stroke="#52b6e6" stroke-width="1.2" stroke-linecap="round" fill="none" data-om-id="51edacca:om-path-8"/>
+          <path d="M255 160 Q205 160 160 165" stroke="#52b6e6" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.7" data-om-id="51edacca:om-path-9"/>
+          <!-- tick marks -->
+          <g data-om-id="51edacca:om-g-1" stroke="#1e4a75" stroke-width="1">
+            <line x1="150" y1="30" x2="150" y2="42" data-om-id="51edacca:om-line-1"/>
+            <line x1="150" y1="258" x2="150" y2="270" data-om-id="51edacca:om-line-2"/>
+            <line x1="30" y1="150" x2="42" y2="150" data-om-id="51edacca:om-line-3"/>
+            <line x1="258" y1="150" x2="270" y2="150" data-om-id="51edacca:om-line-4"/>
+          </g>
+          <!-- top text arc labels (decorative ticks) -->
+          <g data-om-id="51edacca:om-g-2" fill="#52b6e6" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2">
+            <text data-om-id="51edacca:om-text-1" data-om-text-id="txt:askappu-blueprint.html:26885:26886" x="150" y="24" text-anchor="middle">N</text>
+            <text data-om-id="51edacca:om-text-2" data-om-text-id="txt:askappu-blueprint.html:26949:26950" x="150" y="286" text-anchor="middle">S</text>
+            <text data-om-id="51edacca:om-text-3" data-om-text-id="txt:askappu-blueprint.html:27012:27013" x="22" y="154" text-anchor="middle">W</text>
+            <text data-om-id="51edacca:om-text-4" data-om-text-id="txt:askappu-blueprint.html:27076:27077" x="280" y="154" text-anchor="middle">E</text>
+          </g>
+        </svg>
+        <div data-om-id="51edacca:om-div-26" data-om-text-id="txt:askappu-blueprint.html:27144:27145" class="initial">A</div>
+      </div>
+
+      <div data-om-id="51edacca:om-div-27">
+        <div data-om-id="51edacca:om-div-28" class="section-label mono"><span data-om-id="51edacca:om-span-10" data-om-text-id="txt:askappu-blueprint.html:27224:27245">02 · About the pilot</span></div>
+        <h2 data-om-id="51edacca:om-h2-1" data-om-text-id="txt:askappu-blueprint.html:27291:27320" class="about-title">Curious kid, blueprint brain.</h2>
+        <p data-om-id="51edacca:om-p-2" data-om-text-id="txt:askappu-blueprint.html:27356:27710" class="about-body">
+          I'm Siddharth — friends call me Appu — twelve years old, from Bangalore. I love figuring out how things work,
+          especially aircraft (why does lift even happen?), chess openings, and the small,
+          quiet magic of a good Harry Potter chapter. I teach whenever I can, because
+          explaining something is the best way to actually understand it.
+        </p>
+        <div class="facts">
+          <div class="fact">
+            <div class="k mono">Age</div>
+            <div class="v">12</div>
+          </div>
+          <div class="fact">
+            <div class="k mono">Based in</div>
+            <div class="v">Bangalore</div>
+          </div>
+          <div class="fact">
+            <div class="k mono">Superpower</div>
+            <div class="v">Curiosity</div>
+          </div>
+          <div class="fact">
+            <div class="k mono">Dream job</div>
+            <div class="v">Aeronaut &nbsp;/ builder</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3: INTERESTS ============ -->
+  <section id="interests" data-screen-label="03 Interests">
+    <div class="interests-wrap">
+      <div class="section-label mono"><span>03 · Flight log</span></div>
+      <h2 class="interests-title">Things I nerd out about.</h2>
+      <p class="interests-sub">A short list of the stuff I read, play, watch and try to teach.</p>
+
+      <div class="interests-grid">
+        <div class="card" data-num="01/05">
+          <div>
+            <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 26 L22 20 L28 6 L32 6 L30 22 L44 26 L44 30 L28 28 L24 40 L28 42 L28 44 L18 42 L18 44 L14 42 L18 30 L4 30 Z"/>
+            </svg>
+            <h3>Flying &amp; Aircraft</h3>
+            <p>How lift, drag and thrust actually work. Paper planes, model kits, cockpit videos on repeat.</p>
+          </div>
+        </div>
+
+        <div class="card" data-num="02/05">
+          <div>
+            <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M24 6 C 20 6 18 10 20 13 L18 15 L16 18 L22 18 L20 26 L28 26 L26 18 L32 18 L30 15 L28 13 C 30 10 28 6 24 6 Z"/>
+              <path d="M18 30 L30 30 L32 36 L16 36 Z"/>
+              <path d="M14 40 L34 40 L34 42 L14 42 Z"/>
+            </svg>
+            <h3>Chess</h3>
+            <p>Openings, middlegame tactics, endgame studies. Currently obsessed with the London and the Caro-Kann.</p>
+          </div>
+        </div>
+
+        <div class="card" data-num="03/05">
+          <div>
+            <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="16" cy="16" r="9"/>
+              <path d="M22 22 L38 40"/>
+              <path d="M36 38 L42 44"/>
+              <path d="M16 7 L16 25 M7 16 L25 16 M9 10 L23 22 M23 10 L9 22" opacity="0.7"/>
+            </svg>
+            <h3>Badminton</h3>
+            <p>Weekend smashes and drop shots. Working on my backhand clear so it stops embarrassing me.</p>
+          </div>
+        </div>
+
+        <div class="card" data-num="04/05">
+          <div>
+            <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 8 L34 8 L34 42 L24 38 L14 42 Z"/>
+              <path d="M20 16 L28 16 M20 22 L28 22 M20 28 L26 28"/>
+              <path d="M8 14 L14 14 M8 20 L14 20 M8 26 L14 26" opacity="0.5"/>
+            </svg>
+            <h3>Harry Potter</h3>
+            <p>Ravenclaw energy. Re-reading the series for the nth time — Prisoner of Azkaban still wins.</p>
+          </div>
+        </div>
+
+        <div class="card" data-num="05/05">
+          <div>
+            <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 14 L24 6 L42 14 L24 22 Z"/>
+              <path d="M12 18 L12 30 C 12 30 16 34 24 34 C 32 34 36 30 36 30 L36 18"/>
+              <path d="M42 14 L42 26"/>
+              <circle cx="42" cy="28" r="2" fill="currentColor" stroke="none"/>
+            </svg>
+            <h3>Teaching</h3>
+            <p>Explaining aerodynamics, chess ideas and small science tricks to whoever will listen — mostly cousins.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4: PROJECTS ============ -->
+  <section id="projects" data-screen-label="04 Projects">
+    <div class="projects-wrap">
+      <div class="projects-header">
+        <div>
+          <div class="section-label mono"><span>04 · Hangar · Live projects</span></div>
+          <h2 class="projects-title">Things I'm building.</h2>
+        </div>
+        <p class="projects-sub">Small AI tools for real problems in India. Each one starts with something I saw at home or in my neighbourhood.</p>
+      </div>
+
+      <div class="projects-grid">
+        <a class="p-card" href="projects/formsaathi/index.html">
+          <div class="p-card-thumb">
+            <img src="projects/formsaathi/hero.jpg" alt="FormSaathi" loading="lazy"/>
+            <div class="p-card-status mono"><span class="dot"></span>In dev</div>
+          </div>
+          <div class="p-card-body">
+            <div class="p-card-code mono">FORM-ASSIST-01</div>
+            <h3>FormSaathi</h3>
+            <p>Fill any Indian government form — in your own language, with a friend.</p>
+            <div class="p-card-footer mono">
+              <span>Civic tools</span>
+              <span class="p-card-arrow">→</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="p-card" href="projects/krishiscan/index.html">
+          <div class="p-card-thumb">
+            <img src="projects/krishiscan/hero.jpg" alt="KrishiScan" loading="lazy"/>
+            <div class="p-card-status beta mono"><span class="dot"></span>Beta</div>
+          </div>
+          <div class="p-card-body">
+            <div class="p-card-code mono">AGRI-MOD-02</div>
+            <h3>KrishiScan</h3>
+            <p>Photograph a sick leaf. Get a diagnosis and a plan — before the crop is gone.</p>
+            <div class="p-card-footer mono">
+              <span>Agriculture</span>
+              <span class="p-card-arrow">→</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="p-card" href="projects/busbuddy/index.html">
+          <div class="p-card-thumb">
+            <img src="projects/busbuddy/hero.jpg" alt="BusBuddy" loading="lazy"/>
+            <div class="p-card-status live mono"><span class="dot"></span>Live</div>
+          </div>
+          <div class="p-card-body">
+            <div class="p-card-code mono">BMTC-API-03</div>
+            <h3>BusBuddy</h3>
+            <p>Bangalore buses, live and readable — for people who don't want to squint at an app.</p>
+            <div class="p-card-footer mono">
+              <span>Civic tools</span>
+              <span class="p-card-arrow">→</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="p-card" href="projects/pathshala/index.html">
+          <div class="p-card-thumb">
+            <img src="projects/pathshala/hero.jpg" alt="PathshalaAI" loading="lazy"/>
+            <div class="p-card-status mono"><span class="dot"></span>In dev</div>
+          </div>
+          <div class="p-card-body">
+            <div class="p-card-code mono">EDU-TRANS-04</div>
+            <h3>PathshalaAI</h3>
+            <p>Any textbook, any language, any kid. Learning shouldn't need translation homework.</p>
+            <div class="p-card-footer mono">
+              <span>Education</span>
+              <span class="p-card-arrow">→</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="p-card" href="projects/doctorsetu/index.html">
+          <div class="p-card-thumb">
+            <img src="projects/doctorsetu/hero.jpg" alt="DoctorSetu" loading="lazy"/>
+            <div class="p-card-status mono"><span class="dot"></span>In dev</div>
+          </div>
+          <div class="p-card-body">
+            <div class="p-card-code mono">RX-DECODE-05</div>
+            <h3>DoctorSetu</h3>
+            <p>That prescription your doctor scribbled? Here's what it actually says.</p>
+            <div class="p-card-footer mono">
+              <span>Healthcare</span>
+              <span class="p-card-arrow">→</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="p-card" href="projects/shopsmart/index.html">
+          <div class="p-card-thumb">
+            <img src="projects/shopsmart/hero.jpg" alt="ShopSmart" loading="lazy"/>
+            <div class="p-card-status beta mono"><span class="dot"></span>Prototype</div>
+          </div>
+          <div class="p-card-body">
+            <div class="p-card-code mono">KIRANA-OS-06</div>
+            <h3>ShopSmart</h3>
+            <p>Kirana inventory over WhatsApp — no app to install, no touchscreen to fight.</p>
+            <div class="p-card-footer mono">
+              <span>SMB / commerce</span>
+              <span class="p-card-arrow">→</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 5: PROBLEMS + CONTACT ============ -->
+  <section id="problems" data-screen-label="05 Mission">
+    <div class="problems-wrap">
+      <div>
+        <div class="section-label mono"><span>04 · Mission brief</span></div>
+        <h2 class="problems-title">AI for Bharat.<br/>Small tools, real problems.</h2>
+        <p class="problems-body">
+          I want to use AI to help with the ordinary stuff — the messy, everyday problems
+          that Indians run into but nobody makes an app for. Not big flashy things. Small,
+          useful, kind tools that actually work in Hindi, Kannada, Tamil, and the way
+          people really talk.
+        </p>
+
+        <div class="mission-box">
+          <div class="tag mono">CURRENT MISSION</div>
+          <div class="text">"Build tools that make daily life in India 1% easier — starting with the things my own family struggles with."</div>
+        </div>
+
+        <ul class="problem-list">
+          <li><span class="bullet">→ 01</span> Helping grandparents navigate government forms and services</li>
+          <li><span class="bullet">→ 02</span> Translating school material into a kid's own language</li>
+          <li><span class="bullet">→ 03</span> Turning long PDFs and notices into simple, one-page answers</li>
+          <li><span class="bullet">→ 04</span> Small tools for local shops, tutors, and neighbourhood problems</li>
+        </ul>
+
+        <a href="#projects" class="see-all-btn">See all 6 projects →</a>
+      </div>
+
+      <div class="contact-card">
+        <h3>Say hello ✈</h3>
+        <p class="desc">Got an idea, a problem worth solving, or just want to talk about aircraft or chess? Drop me a note.</p>
+        <form id="contact-form" onsubmit="return sendMessage(event)">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" required placeholder="e.g. Aisha M."/>
+          </div>
+          <div class="field">
+            <label for="email">Email (optional)</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com"/>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required placeholder="Tell me what you're thinking..."></textarea>
+          </div>
+          <button type="submit" class="btn">Transmit message →</button>
+          <div class="form-msg" id="form-msg"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div>askappu.in · © 2026 Siddharth · Bangalore, India</div>
+  <div>Built with curiosity &amp; caffeine-free chai</div>
+</footer>
+
+<script>
+  // Contact form -> opens user's email client via mailto (works on static hosting)
+  function sendMessage(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const msg = document.getElementById('form-msg');
+
+    // CHANGE THIS EMAIL to Siddharth's real address before deploying
+    const to = 'hello@askappu.in';
+
+    const subject = encodeURIComponent(`Hello from ${name} — via askappu.in`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email || '(not provided)'}\n\nMessage:\n${message}\n\n— sent from askappu.in`
+    );
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    msg.textContent = '✓ Opening your email app…';
+    return false;
+  }
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal, section').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
